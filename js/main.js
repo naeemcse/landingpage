@@ -313,6 +313,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Initialize Hero Swiper Slider
+  if (typeof Swiper !== 'undefined') {
+    const heroSwiper = new Swiper('.hero-swiper', {
+      loop: true,
+      speed: 700,
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      },
+      grabCursor: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true
+      },
+      pagination: {
+        el: '.hero-swiper-pagination',
+        clickable: true,
+        dynamicBullets: true
+      },
+      navigation: {
+        nextEl: '.hero-swiper-next',
+        prevEl: '.hero-swiper-prev'
+      },
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true
+      }
+    });
+  }
+
   // Initialize summary on first load
   updateOrderSummary();
 });
