@@ -1,0 +1,86 @@
+[
+  {
+    "id": "desi-egg",
+    "name": "দেশি মুরগির ডিম",
+    "category": "অর্গানিক দেশি",
+    "badge": "১০০% অর্গানিক",
+    "badgeClass": "badge-organic",
+    "stockStatus": "স্টকে আছে",
+    "image": "assets/images/deshi_dim.jpeg",
+    "alt": "দেশি মুরগির ডিম",
+    "description": "উন্মুক্ত চারণভূমিতে প্রাকৃতিক ঘাস ও পোকা-মাকড় খাওয়া দেশি মুরগির গাঢ় হলুদ কুসুমযুক্ত খাঁটি ডিম।",
+    "features": [
+      "গাঢ় লালচে/হলুদ কুসুম",
+      "উচ্চমাত্রার ওমেগা-৩ ও প্রোটিন",
+      "শিশুদের জন্য পরম উপকারী"
+    ],
+    "priceLabel": "প্রতি ডজন (১২টি)",
+    "unitPrice": 220,
+    "unitLabel": "ডজন (১২টি)",
+    "shortPriceLabel": "৳ ২২০ / ডজন",
+    "isDefault": true
+  },
+  {
+    "id": "layer-egg",
+    "name": "ফার্মের লাল লেয়ার ডিম",
+    "category": "প্রিমিয়াম লেয়ার",
+    "badge": "সেরা বিক্রয়",
+    "badgeClass": "badge-popular",
+    "stockStatus": "স্টকে আছে",
+    "image": "assets/images/poultry_egg_00.jpg",
+    "alt": "ফার্মের লাল লেয়ার ডিম",
+    "description": "আধুনিক স্বাস্থ্যসম্মত শেডে নিয়ন্ত্রিত পুষ্টিকর ফিড খাওয়া মুরগির বাছাইকৃত বড় সাইজের লাল ডিম।",
+    "features": [
+      "এ-গ্রেড বড় সাইজ",
+      "প্রতিদিনের নাস্তায় সাশ্রয়ী",
+      "সম্পূর্ণ পরিষ্কার ও জীবাণুমুক্ত"
+    ],
+    "priceLabel": "প্রতি ডজন (১২টি)",
+    "unitPrice": 150,
+    "unitLabel": "ডজন (১২টি)",
+    "shortPriceLabel": "৳ ১৫০ / ডজন",
+    "isDefault": false
+  },
+  {
+    "id": "duck-egg",
+    "name": "তাজা দেশি হাঁসের ডিম",
+    "category": "হাওরের হাঁসের ডিম",
+    "badge": "পুষ্টিগুণে সেরা",
+    "badgeClass": "badge-fresh",
+    "stockStatus": "স্টকে আছে",
+    "image": "assets/images/haser_dim01.webp",
+    "alt": "তাজা দেশি হাঁসের ডিম",
+    "description": "হাওর ও বিলের প্রাকৃতিক শামুক-ঝিনুক খাওয়া দেশি হাঁসের বড় আকারের তাজা ও ঘন কুসুমের ডিম।",
+    "features": [
+      "প্রচুর আয়রন ও ভিটামিন বি-১২",
+      "ঘন ও ক্রিমি কুসুমের স্বাদ",
+      "বেকিং ও হালুয়ায় অতুলনীয়"
+    ],
+    "priceLabel": "প্রতি ডজন (১২টি)",
+    "unitPrice": 210,
+    "unitLabel": "ডজন (১২টি)",
+    "shortPriceLabel": "৳ ২১০ / ডজন",
+    "isDefault": false
+  },
+  {
+    "id": "live-duck",
+    "name": "সুস্থ জীবিত খাঁটি হাঁস",
+    "category": "জীবন্ত হাঁস",
+    "badge": "জীবিত ও সুস্থ",
+    "badgeClass": "badge-organic",
+    "stockStatus": "সীমিত স্টক",
+    "image": "assets/images/haser_dim_00.jpg",
+    "alt": "সুস্থ জীবিত দেশি হাঁস",
+    "description": "খামারে দেশীয় পদ্ধতিতে লালিত সুস্থ-সবল তাজা জীবন্ত হাঁস। স্পেশাল খাবারের স্বাদ ও ঘরোয়া অনুষ্ঠানের জন্য সেরা।",
+    "features": [
+      "ওজন: ১.৩ - ১.৫ কেজি আনুমানিক",
+      "সম্পূর্ণ রোগমুক্ত ও অ্যাক্টিভ",
+      "নিরাপদ ঝুড়িতে হোম ডেলিভারি"
+    ],
+    "priceLabel": "প্রতি পিস (আনুমানিক)",
+    "unitPrice": 550,
+    "unitLabel": "পিস (১.৩-১.৫ কেজি)",
+    "shortPriceLabel": "৳ ৫৫০ / পিস",
+    "isDefault": false
+  }
+]

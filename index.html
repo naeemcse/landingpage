@@ -26,6 +26,35 @@
 
   <!-- Custom Stylesheet with Branding Color Variables -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Structured Data: Organization & Products (SEO) -->
+  <script type="application/ld+json" id="seoOrganizationSchema">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "ডিম বাড়ি",
+    "description": "খামারের খাঁটি দেশি মুরগির ডিম, লেয়ার ডিম, হাঁসের ডিম ও সুস্থ জীবিত হাঁস পাইকারি ও খুচরা মূল্যে হোম ডেলিভারি।",
+    "telephone": "01700000000",
+    "email": "order@dimbari.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ডেমরা রোড, মাতুয়াইল",
+      "addressLocality": "ঢাকা",
+      "postalCode": "1362",
+      "addressCountry": "BD"
+    },
+    "openingHours": "Mo-Su 08:00-22:00",
+    "priceRange": "৳৳"
+  }
+  </script>
+  <script type="application/ld+json" id="seoProductsSchema">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "খামারের তাজা পণ্য তালিকা",
+    "itemListElement": []
+  }
+  </script>
 </head>
 
 <body>
@@ -34,10 +63,9 @@
   <div class="top-notice-bar text-center">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-        <span><i class="bi bi-truck me-1"></i> ঢাকা সিটিতে দ্রুততম হোম ডেলিভারি সুবিধা!</span>
-        <span class="d-none d-md-inline"><i class="bi bi-shield-check me-1"></i> ১০০% প্রাকৃতিক খাবার ও ভাঙা ডিমের ফ্রি
-          রিপ্লেসমেন্ট</span>
-        <span><i class="bi bi-telephone-fill me-1"></i> হেল্পলাইন: <a href="tel:01700000000">০১৭০০-০০০০০০</a></span>
+        <span id="topNotice1"><i class="bi bi-truck me-1"></i> ঢাকা সিটিতে দ্রুততম হোম ডেলিভারি সুবিধা!</span>
+        <span class="d-none d-md-inline" id="topNotice2"><i class="bi bi-shield-check me-1"></i> ১০০% প্রাকৃতিক খাবার ও ভাঙা ডিমের ফ্রি রিপ্লেসমেন্ট</span>
+        <span><i class="bi bi-telephone-fill me-1"></i> হেল্পলাইন: <a href="tel:01700000000" id="topPhoneLink"><span id="topPhoneDisplay">০১৭০০-০০০০০০</span></a></span>
       </div>
     </div>
   </div>
@@ -307,7 +335,7 @@
         </p>
       </div>
 
-      <div class="row g-4">
+      <div class="row g-4" id="productsGrid">
         <!-- Product 1: Desi Chicken Egg -->
         <div class="col-md-6 col-lg-3">
           <div class="product-card">
@@ -346,8 +374,7 @@
           <div class="product-card">
             <span class="product-badge badge-popular">সেরা বিক্রয়</span>
             <div class="product-img-wrap">
-              <img src="https://images.unsplash.com/photo-1587486913049-53fc88980cfc?auto=format&fit=crop&w=600&q=80"
-                alt="ফার্মের লাল লেয়ার ডিম" loading="lazy">
+              <img src="./assets/images/poultry_egg_00.jpg" alt="ফার্মের লাল লেয়ার ডিম" loading="lazy">
               <span class="product-stock"><i class="bi bi-check2-circle text-success me-1"></i>স্টকে আছে</span>
             </div>
             <div class="product-body">
@@ -380,8 +407,7 @@
           <div class="product-card">
             <span class="product-badge badge-fresh">পুষ্টিগুণে সেরা</span>
             <div class="product-img-wrap">
-              <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=600&q=80"
-                alt="তাজা দেশি হাঁসের ডিম" loading="lazy">
+              <img src="./assets/images/haser_dim01.webp" alt="তাজা দেশি হাঁসের ডিম" loading="lazy">
               <span class="product-stock"><i class="bi bi-check2-circle text-success me-1"></i>স্টকে আছে</span>
             </div>
             <div class="product-body">
@@ -531,13 +557,13 @@
                     <span>আপনার পছন্দের পণ্য নির্বাচন করুন:</span>
                   </div>
 
-                  <div class="product-radio-grid">
+                  <div class="product-radio-grid" id="productRadioGrid">
                     <!-- Option 1: Desi Egg -->
                     <label class="product-radio-item">
                       <input type="radio" name="selectedProduct" value="desi-egg" checked>
                       <div class="product-radio-card">
                         <img
-                          src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=120&q=80"
+                          src="./assets/images/deshi_dim.jpeg"
                           class="radio-img" alt="দেশি ডিম">
                         <div class="radio-details">
                           <p class="radio-title">দেশি মুরগির ডিম</p>
@@ -551,7 +577,7 @@
                       <input type="radio" name="selectedProduct" value="layer-egg">
                       <div class="product-radio-card">
                         <img
-                          src="https://images.unsplash.com/photo-1587486913049-53fc88980cfc?auto=format&fit=crop&w=120&q=80"
+                          src="./assets/images/poultry_egg_00.jpg"
                           class="radio-img" alt="ফার্মের লেয়ার ডিম">
                         <div class="radio-details">
                           <p class="radio-title">ফার্মের লেয়ার ডিম</p>
@@ -565,7 +591,7 @@
                       <input type="radio" name="selectedProduct" value="duck-egg">
                       <div class="product-radio-card">
                         <img
-                          src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=120&q=80"
+                          src="./assets/images/haser_dim01.webp"
                           class="radio-img" alt="হাঁসের ডিম">
                         <div class="radio-details">
                           <p class="radio-title">দেশি হাঁসের ডিম</p>
@@ -579,7 +605,7 @@
                       <input type="radio" name="selectedProduct" value="live-duck">
                       <div class="product-radio-card">
                         <img
-                          src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=120&q=80"
+                          src="./assets/images/haser_dim_00.jpg"
                           class="radio-img" alt="জীবিত হাঁস">
                         <div class="radio-details">
                           <p class="radio-title">জীবিত খাঁটি হাঁস</p>
@@ -659,19 +685,19 @@
                     <span>ডেলিভারি এলাকা বাছাই করুন:</span>
                   </div>
 
-                  <div class="d-flex flex-wrap gap-3">
+                  <div class="d-flex flex-wrap gap-3" id="deliveryAreaGroup">
                     <div class="form-check p-0">
                       <label class="btn btn-outline-success px-4 py-2 rounded-pill d-flex align-items-center gap-2">
-                        <input class="form-check-input mt-0" type="radio" name="deliveryArea" value="60"
+                        <input class="form-check-input mt-0" type="radio" id="deliveryInsideRadio" name="deliveryArea" value="60"
                           data-label="ঢাকার ভিতরে" checked>
-                        <span>ঢাকার ভিতরে (৳৬০)</span>
+                        <span id="deliveryInsideLabel">ঢাকার ভিতরে (৳৬০)</span>
                       </label>
                     </div>
                     <div class="form-check p-0">
                       <label class="btn btn-outline-success px-4 py-2 rounded-pill d-flex align-items-center gap-2">
-                        <input class="form-check-input mt-0" type="radio" name="deliveryArea" value="120"
+                        <input class="form-check-input mt-0" type="radio" id="deliveryOutsideRadio" name="deliveryArea" value="120"
                           data-label="ঢাকার বাইরে">
-                        <span>ঢাকার বাইরে / জেলা শহর (৳১২০)</span>
+                        <span id="deliveryOutsideLabel">ঢাকার বাইরে / জেলা শহর (৳১২০)</span>
                       </label>
                     </div>
                   </div>
@@ -965,10 +991,10 @@
             অঙ্গীকার।
           </p>
           <div class="d-flex gap-3 mt-3">
-            <a href="#" class="text-white fs-5" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="text-white fs-5" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="text-white fs-5" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-            <a href="#" class="text-white fs-5" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" id="footerSocialFacebook" class="text-white fs-5" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" id="footerSocialInstagram" class="text-white fs-5" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" id="footerSocialYouTube" class="text-white fs-5" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="#" id="footerSocialWhatsApp" class="text-white fs-5" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
           </div>
         </div>
 
@@ -985,7 +1011,7 @@
 
         <div class="col-6 col-lg-2">
           <h5>আমাদের পণ্য</h5>
-          <ul class="footer-links">
+          <ul class="footer-links" id="footerProductLinks">
             <li><a href="#order-section" onclick="selectProductAndScroll('desi-egg')">দেশি মুরগির ডিম</a></li>
             <li><a href="#order-section" onclick="selectProductAndScroll('layer-egg')">ফার্মের লেয়ার ডিম</a></li>
             <li><a href="#order-section" onclick="selectProductAndScroll('duck-egg')">দেশি হাঁসের ডিম</a></li>
@@ -997,27 +1023,27 @@
           <h5>যোগাযোগ ও খামার</h5>
           <div class="footer-contact-item">
             <i class="bi bi-geo-alt-fill"></i>
-            <span>খামার: ডেমরা রোড, মাতুয়াইল, ঢাকা-১৩৬২</span>
+            <span id="footerFarmAddress">খামার: ডেমরা রোড, মাতুয়াইল, ঢাকা-১৩৬২</span>
           </div>
           <div class="footer-contact-item">
             <i class="bi bi-telephone-fill"></i>
-            <span>হটলাইন: <a href="tel:01700000000" class="text-white">০১৭০০-০০০০০০</a> (সকাল ৮টা - রাত ১০টা)</span>
+            <span>হটলাইন: <a href="tel:01700000000" id="footerPhoneLink" class="text-white"><span id="footerPhoneDisplay">০১৭০০-০০০০০০</span></a> <span id="footerSupportHours">(সকাল ৮টা - রাত ১০টা)</span></span>
           </div>
           <div class="footer-contact-item">
             <i class="bi bi-envelope-fill"></i>
-            <span>ইমেইল: order@dimbari.com</span>
+            <span>ইমেইল: <a href="mailto:order@dimbari.com" id="footerEmailLink" class="text-white"><span id="footerEmail">order@dimbari.com</span></a></span>
           </div>
           <div class="footer-contact-item">
             <i class="bi bi-clock-fill"></i>
-            <span>ডেলিভারি সময়: প্রতিদিন সকাল ৯টা থেকে সন্ধ্যা ৮টা</span>
+            <span id="footerDeliveryHours">ডেলিভারি সময়: প্রতিদিন সকাল ৯টা থেকে সন্ধ্যা ৮টা</span>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-          <span>&copy; ২০২৬ ডিম বাড়ি এগ্রো। সর্বস্বত্ব সংরক্ষিত।</span>
-          <span>ডিজাইন ও ডেভেলপমেন্ট: আধুনিক হাই-কনভার্সন ল্যান্ডিং পেজ</span>
+          <span id="footerCopyright">&copy; ২০২৬ ডিম বাড়ি এগ্রো। সর্বস্বত্ব সংরক্ষিত।</span>
+          <span id="footerCredit">ডিজাইন ও ডেভেলপমেন্ট: আধুনিক হাই-কনভার্সন ল্যান্ডিং পেজ</span>
         </div>
       </div>
     </div>
@@ -1028,6 +1054,7 @@
     <!-- WhatsApp Direct Chat Button -->
     <a href="https://wa.me/8801700000000?text=%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%A1%E0%A6%BF%E0%A6%AE%20%E0%A6%AC%E0%A6%BE%20%E0%A6%B9%E0%A6%BE%E0%A6%81%E0%A6%B8%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87"
       target="_blank" rel="noopener noreferrer" class="floating-btn floating-whatsapp"
+      id="floatingWhatsAppBtn"
       aria-label="হোয়াটসঅ্যাপে যোগাযোগ করুন">
       <i class="bi bi-whatsapp"></i>
       <span class="floating-tooltip">হোয়াটসঅ্যাপে অর্ডার</span>

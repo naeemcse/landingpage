@@ -1,0 +1,33 @@
+{
+  "brand": {
+    "name": "ডিম বাড়ি",
+    "tagline": "খামার ফ্রেশ এগ্রো",
+    "description": "১০০% অর্গানিক ও প্রাকৃতিক উপায়ে উৎপাদিত তাজা ডিম এবং সুস্থ-সবল হাঁস সরাসরি আপনার পরিবারে পৌঁছে দেওয়াই আমাদের অঙ্গীকার।",
+    "copyright": "© ২০২৬ ডিম বাড়ি এগ্রো। সর্বস্বত্ব সংরক্ষিত।",
+    "credit": "ডিজাইন ও ডেভেলপমেন্ট: আধুনিক হাই-কনভার্সন ল্যান্ডিং পেজ"
+  },
+  "contact": {
+    "phone": "01700000000",
+    "phoneDisplay": "০১৭০০-০০০০০০",
+    "supportHours": "সকাল ৮টা - রাত ১০টা",
+    "whatsappNumber": "8801700000000",
+    "whatsappDefaultMessage": "আমি ডিম বা হাঁস অর্ডার করতে চাই",
+    "email": "order@dimbari.com",
+    "farmAddress": "ডেমরা রোড, মাতুয়াইল, ঢাকা-১৩৬২",
+    "deliveryHours": "প্রতিদিন সকাল ৯টা থেকে সন্ধ্যা ৮টা"
+  },
+  "notices": {
+    "topNotice1": "ঢাকা সিটিতে দ্রুততম হোম ডেলিভারি সুবিধা!",
+    "topNotice2": "১০০% প্রাকৃতিক খাবার ও ভাঙা ডিমের ফ্রি রিপ্লেসমেন্ট"
+  },
+  "deliveryCharges": {
+    "insideDhaka": 60,
+    "outsideDhaka": 120
+  },
+  "socialLinks": {
+    "facebook": "https://facebook.com",
+    "instagram": "https://instagram.com",
+    "youtube": "https://youtube.com",
+    "whatsapp": "https://wa.me/8801700000000"
+  }
+}
