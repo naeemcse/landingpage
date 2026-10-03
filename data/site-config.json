@@ -21,8 +21,8 @@
     "topNotice2": "১০০% প্রাকৃতিক খাবার ও ভাঙা ডিমের ফ্রি রিপ্লেসমেন্ট"
   },
   "deliveryCharges": {
-    "insideDhaka": 60,
-    "outsideDhaka": 120
+    "insideDhaka": 10,
+    "outsideDhaka": 50
   },
   "socialLinks": {
     "facebook": "https://facebook.com",
@@ -30,5 +30,5 @@
     "youtube": "https://youtube.com",
     "whatsapp": "https://wa.me/8801846905627"
   },
-  "googleSheetScriptUrl": ""
+  "googleSheetScriptUrl": "https://script.google.com/macros/s/AKfycbwKezn9QVNcqXCwKXeVlY9AEtqW0h4P1OHCnKntf9YchP1tmJBW07wVGxIQaiHw9Nh4/exec"
 }

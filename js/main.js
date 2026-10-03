@@ -28,13 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
       credit: "ডিজাইন ও ডেভেলপমেন্ট: আধুনিক হাই-কনভার্সন ল্যান্ডিং পেজ"
     },
     contact: {
-      phone: "01700000000",
-      phoneDisplay: "০১৭০০-০০০০০০",
+      phone: "01846905627",
+      phoneDisplay: "০১৮৪৬-৯০৫৬২৭",
       supportHours: "সকাল ৮টা - রাত ১০টা",
-      whatsappNumber: "8801700000000",
+      whatsappNumber: "8801846905627",
       whatsappDefaultMessage: "আমি ডিম বা হাঁস অর্ডার করতে চাই",
-      email: "order@dimbari.com",
-      farmAddress: "ডেমরা রোড, মাতুয়াইল, ঢাকা-১৩৬২",
+      email: "pasheaci@gmail.com",
+      farmAddress: "মিরপুর ১২ , পল্লবী ",
       deliveryHours: "প্রতিদিন সকাল ৯টা থেকে সন্ধ্যা ৮টা"
     },
     notices: {
@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
       topNotice2: "১০০% প্রাকৃতিক খাবার ও ভাঙা ডিমের ফ্রি রিপ্লেসমেন্ট"
     },
     deliveryCharges: {
-      insideDhaka: 60,
-      outsideDhaka: 120
+      insideDhaka: 10,
+      outsideDhaka: 50
     },
     socialLinks: {
       facebook: "https://facebook.com",
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (insideRadio.checked) deliveryFee = parseInt(config.deliveryCharges.insideDhaka, 10);
       }
       if (insideLabel && config.deliveryCharges.insideDhaka) {
-        insideLabel.textContent = `ঢাকার ভিতরে (৳${toBanglaDigits(config.deliveryCharges.insideDhaka)})`;
+        insideLabel.textContent = `মিরপুরের ভিতরে (৳${toBanglaDigits(config.deliveryCharges.insideDhaka)})`;
       }
 
       const outsideRadio = document.getElementById('deliveryOutsideRadio');
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (outsideRadio.checked) deliveryFee = parseInt(config.deliveryCharges.outsideDhaka, 10);
       }
       if (outsideLabel && config.deliveryCharges.outsideDhaka) {
-        outsideLabel.textContent = `ঢাকার বাইরে / জেলা শহর (৳${toBanglaDigits(config.deliveryCharges.outsideDhaka)})`;
+        outsideLabel.textContent = `মিরপুরের বাইরে / ঢাকা শহর (৳${toBanglaDigits(config.deliveryCharges.outsideDhaka)})`;
       }
     }
 
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
           "email": config.contact.email || "order@dimbari.com",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": config.contact.farmAddress || "ডেমরা রোড, মাতুয়াইল",
+            "streetAddress": config.contact.farmAddress || "মিরপুর ১২ , পল্লবী ",
             "addressLocality": "ঢাকা",
             "postalCode": "1362",
             "addressCountry": "BD"
