@@ -27,6 +27,13 @@
   <!-- Custom Stylesheet with Branding Color Variables -->
   <link rel="stylesheet" href="css/style.css">
 
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="./assets/favicon/site.webmanifest">
+
+
   <!-- Structured Data: Organization & Products (SEO) -->
   <script type="application/ld+json" id="seoOrganizationSchema">
   {
@@ -1083,13 +1090,19 @@
             <i class="bi bi-check-lg"></i>
           </div>
 
-          <h3 class="fw-bold text-success mb-2">অর্ডার সফলভাবে গৃহীত হয়েছে!</h3>
+          <div
+            class="d-inline-flex align-items-center gap-1 badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill mb-3">
+            <i class="bi bi-check2-circle fs-6"></i>
+            <span>অর্ডার সফলভাবে সিস্টেমে জমা হয়েছে</span>
+          </div>
+
+          <h3 class="fw-bold text-dark mb-2">ধন্যবাদ! আপনার অর্ডারটি গৃহীত হয়েছে</h3>
           <p class="text-muted mb-4">
-            ধন্যবাদ! আপনার ডিমের অর্ডারটি আমরা পেয়েছি। আমাদের একজন কাস্টমার প্রতিনিধি শীঘ্রই <strong
-              id="modalOrderPhone"></strong> নম্বরে কল করে ডেলিভারি নিশ্চিত করবেন।
+            আপনার অর্ডারটি সংরক্ষিত হয়েছে। অতি দ্রুত ডেলিভারি নিশ্চিত করতে নিচের সবুজ বাটনে ক্লিক করে আমাদের
+            হোয়াটসঅ্যাপে এক ক্লিকে মেসেজ পাঠান।
           </p>
 
-          <div class="bg-light p-3 rounded-3 text-start mb-4">
+          <div class="bg-light p-3 rounded-3 text-start mb-4 border">
             <div class="d-flex justify-content-between mb-2">
               <span class="text-muted">নির্বাচিত পণ্য:</span>
               <strong id="modalOrderProduct" class="text-dark">দেশি মুরগির ডিম</strong>
@@ -1098,18 +1111,28 @@
               <span class="text-muted">পরিমাণ:</span>
               <strong id="modalOrderQty" class="text-dark">১ ডজন</strong>
             </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted">মোবাইল নম্বর:</span>
+              <strong id="modalOrderPhone" class="text-dark">০১৭xxxxxxxx</strong>
+            </div>
             <div class="d-flex justify-content-between pt-2 border-top">
-              <span class="fw-bold">সর্বমোট প্রদেয়:</span>
+              <span class="fw-bold text-dark">সর্বমোট প্রদেয়:</span>
               <strong id="modalOrderTotal" class="text-success fs-5">৳ ২৮০</strong>
             </div>
           </div>
 
           <div class="d-flex flex-column gap-2">
-            <a id="modalWhatsAppBtn" href="#" target="_blank" class="btn btn-success py-2 rounded-pill fw-bold">
-              <i class="bi bi-whatsapp me-1"></i> হোয়াটসঅ্যাপে অর্ডার কনফার্মেশন পাঠান
+            <a id="modalWhatsAppBtn" href="#" target="_blank"
+              class="btn btn-success btn-lg py-3 rounded-pill fw-bold shadow-sm d-flex align-items-center justify-content-center gap-2">
+              <i class="bi bi-whatsapp fs-4"></i>
+              <span>হোয়াটসঅ্যাপে মেসেজ পাঠান (অর্ডার কনফার্ম)</span>
             </a>
+            <p class="small text-muted mb-2">
+              <i class="bi bi-info-circle me-1"></i> হোয়াটসঅ্যাপে মেসেজ পাঠালে আমরা সরাসরি আপনার সাথে যোগাযোগ করে
+              দ্রুততম সময়ে ডিম পৌঁছে দেব।
+            </p>
             <button type="button" class="btn btn-outline-secondary py-2 rounded-pill" data-bs-dismiss="modal">
-              ঠিক আছে
+              পরে যোগাযোগ করব / বন্ধ করুন
             </button>
           </div>
         </div>

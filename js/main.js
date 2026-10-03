@@ -28,13 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
       credit: "ডিজাইন ও ডেভেলপমেন্ট: আধুনিক হাই-কনভার্সন ল্যান্ডিং পেজ"
     },
     contact: {
-      phone: "01700000000",
-      phoneDisplay: "০১৭০০-০০০০০০",
+      phone: "01846905627",
+      phoneDisplay: "০১৮৪৬-৯০৫৬২৭",
       supportHours: "সকাল ৮টা - রাত ১০টা",
-      whatsappNumber: "8801700000000",
+      whatsappNumber: "8801846905627",
       whatsappDefaultMessage: "আমি ডিম বা হাঁস অর্ডার করতে চাই",
-      email: "order@dimbari.com",
-      farmAddress: "ডেমরা রোড, মাতুয়াইল, ঢাকা-১৩৬২",
+      email: "pasheaci@gmail.com",
+      farmAddress: "মিরপুর ১২ , পল্লবী ",
       deliveryHours: "প্রতিদিন সকাল ৯টা থেকে সন্ধ্যা ৮টা"
     },
     notices: {
@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
       topNotice2: "১০০% প্রাকৃতিক খাবার ও ভাঙা ডিমের ফ্রি রিপ্লেসমেন্ট"
     },
     deliveryCharges: {
-      insideDhaka: 60,
-      outsideDhaka: 120
+      insideDhaka: 10,
+      outsideDhaka: 50
     },
     socialLinks: {
       facebook: "https://facebook.com",
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (insideRadio.checked) deliveryFee = parseInt(config.deliveryCharges.insideDhaka, 10);
       }
       if (insideLabel && config.deliveryCharges.insideDhaka) {
-        insideLabel.textContent = `ঢাকার ভিতরে (৳${toBanglaDigits(config.deliveryCharges.insideDhaka)})`;
+        insideLabel.textContent = `মিরপুরের ভিতরে (৳${toBanglaDigits(config.deliveryCharges.insideDhaka)})`;
       }
 
       const outsideRadio = document.getElementById('deliveryOutsideRadio');
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (outsideRadio.checked) deliveryFee = parseInt(config.deliveryCharges.outsideDhaka, 10);
       }
       if (outsideLabel && config.deliveryCharges.outsideDhaka) {
-        outsideLabel.textContent = `ঢাকার বাইরে / জেলা শহর (৳${toBanglaDigits(config.deliveryCharges.outsideDhaka)})`;
+        outsideLabel.textContent = `মিরপুরের বাইরে / ঢাকা শহর (৳${toBanglaDigits(config.deliveryCharges.outsideDhaka)})`;
       }
     }
 
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
           "email": config.contact.email || "order@dimbari.com",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": config.contact.farmAddress || "ডেমরা রোড, মাতুয়াইল",
+            "streetAddress": config.contact.farmAddress || "মিরপুর ১২ , পল্লবী ",
             "addressLocality": "ঢাকা",
             "postalCode": "1362",
             "addressCountry": "BD"
@@ -599,10 +599,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   /**
-   * Form Submission Handler
+   * Form Submission Handler (Google Sheets + WhatsApp Integration)
    */
   if (orderForm) {
-    orderForm.addEventListener('submit', (e) => {
+    orderForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const customerName = document.getElementById('customerName').value.trim();
@@ -610,6 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const customerAddress = document.getElementById('customerAddress').value.trim();
       const deliveryLocation = document.querySelector('input[name="deliveryArea"]:checked')?.dataset.label || 'ঢাকার ভিতরে';
       const notes = document.getElementById('customerNotes')?.value.trim() || 'কোনো বিশেষ নির্দেশনা নেই';
+      const submitBtn = orderForm.querySelector('button[type="submit"]');
 
       // Basic validation
       if (!customerName || !customerPhone || !customerAddress) {
@@ -628,7 +629,52 @@ document.addEventListener('DOMContentLoaded', () => {
       const subtotal = prod.unitPrice * currentQty;
       const grandTotal = subtotal + deliveryFee;
 
-      // Populate Success Modal Data
+      // Show Loading UI on submit button
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> অর্ডার প্রসেস হচ্ছে...`;
+      }
+
+      // 1. Prepare Order Data Object for Google Sheets & Records
+      const now = new Date();
+      const orderPayload = {
+        timestamp: now.toLocaleString('bn-BD', { timeZone: 'Asia/Dhaka' }),
+        date: now.toLocaleDateString('en-GB'),
+        time: now.toLocaleTimeString('en-GB'),
+        customerName: customerName,
+        customerPhone: customerPhone,
+        customerAddress: customerAddress,
+        productName: prod.name,
+        quantity: `${currentQty} ${prod.unitLabel || 'টি'}`,
+        unitPrice: prod.unitPrice,
+        subtotal: subtotal,
+        deliveryLocation: deliveryLocation,
+        deliveryFee: deliveryFee,
+        total: grandTotal,
+        notes: notes
+      };
+
+      // 2. Send to Google Sheets (if URL configured)
+      const sheetScriptUrl = siteConfig.googleSheetScriptUrl?.trim();
+      if (sheetScriptUrl && sheetScriptUrl.startsWith('http')) {
+        try {
+          // Using mode: 'no-cors' allows posting to Google Apps Script Web App without CORS blocks
+          await fetch(sheetScriptUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderPayload)
+          });
+          console.log('Order successfully sent to Google Sheet');
+        } catch (sheetErr) {
+          console.warn('Google Sheet submission warning (will still proceed to WhatsApp):', sheetErr);
+        }
+      }
+
+      // 3. Populate Success Modal Data
       const modalProdName = document.getElementById('modalOrderProduct');
       const modalQty = document.getElementById('modalOrderQty');
       const modalTotal = document.getElementById('modalOrderTotal');
@@ -639,32 +685,41 @@ document.addEventListener('DOMContentLoaded', () => {
       if (modalTotal) modalTotal.textContent = `৳ ${toBanglaDigits(grandTotal)}`;
       if (modalPhone) modalPhone.textContent = customerPhone;
 
-      // WhatsApp Direct Order Link (pre-formatted message)
+      // 4. WhatsApp Direct Order Link (pre-formatted message)
       const whatsappBtn = document.getElementById('modalWhatsAppBtn');
       if (whatsappBtn) {
         const waMessage = encodeURIComponent(
-          `নতুন ডিমের অর্ডার!\n` +
-          `----------------------\n` +
-          `নাম: ${customerName}\n` +
-          `মোবাইল: ${customerPhone}\n` +
-          `পণ্য: ${prod.name} (${currentQty} টি)\n` +
-          `মোট প্রদেয়: ৳${grandTotal}\n` +
-          `ঠিকানা: ${customerAddress}\n` +
-          `ডেলিভারি এলাকা: ${deliveryLocation}\n` +
-          `নোট: ${notes}`
+          `🥚 *নতুন ডিমের অর্ডার!* 🥚\n` +
+          `--------------------------------\n` +
+          `👤 *গ্রাহকের নাম:* ${customerName}\n` +
+          `📱 *মোবাইল:* ${customerPhone}\n` +
+          `📦 *পণ্য:* ${prod.name} (${toBanglaDigits(currentQty)} ${prod.unitLabel || 'টি'})\n` +
+          `💵 *পণ্যের দাম:* ৳${toBanglaDigits(subtotal)}\n` +
+          `🚚 *ডেলিভারি এলাকা:* ${deliveryLocation} (৳${toBanglaDigits(deliveryFee)})\n` +
+          `💰 *সর্বমোট বিল:* ৳${toBanglaDigits(grandTotal)}\n` +
+          `🏠 *ঠিকানা:* ${customerAddress}\n` +
+          (notes && notes !== 'কোনো বিশেষ নির্দেশনা নেই' ? `📝 *নোট:* ${notes}\n` : '') +
+          `--------------------------------\n` +
+          `অনুরোধ: অনুগ্রহ করে দ্রুত অর্ডারটি কনফার্ম করুন।`
         );
-        const waNumber = siteConfig.contact?.whatsappNumber || '8801700000000';
+        const waNumber = siteConfig.contact?.whatsappNumber || '8801846905627';
         whatsappBtn.href = `https://wa.me/${waNumber}?text=${waMessage}`;
       }
 
-      // Show Bootstrap Modal
+      // 5. Show Bootstrap Modal
       const modalEl = document.getElementById('orderSuccessModal');
       if (modalEl && typeof bootstrap !== 'undefined') {
         const successModal = new bootstrap.Modal(modalEl);
         successModal.show();
       }
 
-      // Reset form on complete
+      // Restore submit button state
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      }
+
+      // Reset form
       orderForm.reset();
       currentQty = 1;
       if (quantityInput) quantityInput.value = 1;
